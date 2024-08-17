@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { useRef } from "react";
+import "./App.css";
+import DiagramComponent from "./page/DiagramComponent";
+import ModDiagram from "./page/ModDiagram";
 
 function App() {
+  const diagramRef = useRef(null);
+  const handleGetDiagramData = () => {
+    if (diagramRef.current) {
+      const diagramData = diagramRef.current.model.toJson();
+      console.log("Diagram Data:", diagramData);
+    }
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div style={{ flex: 1 }}>
+        <DiagramComponent />
+      </div>
+      <div style={{ flex: 1 }}>
+        <ModDiagram diagramRef={diagramRef} />
+      </div>
+      <button onClick={handleGetDiagramData}>Get Diagram Data</button>
     </div>
   );
 }
