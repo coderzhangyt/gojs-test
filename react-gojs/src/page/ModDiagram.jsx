@@ -7,7 +7,7 @@ const ModDiagram = ({ diagramRef }) => {
 
     const myDiagram = $(go.Diagram, "myDiagramDiv", {
       "clickCreatingTool.archetypeNodeData": { text: "Node", color: "white" }, //双击图表空白区域后生成一个新节点
-      "undoManager.isEnabled": true, //启用或禁用撤销和重做功能
+      "undoManager.isEnabled": true, //enable Ctrl-Z to undo and Ctrl-Y to redo
     });
 
     function nodeInfo(d) {
